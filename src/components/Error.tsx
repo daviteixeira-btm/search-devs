@@ -1,7 +1,15 @@
 const Error = () => {
   return (
     <div>
-        <p>Usuário não encontrado!</p>
+        <p 
+          style={{ 
+            color: '#8C19D2',
+            fontWeight: '600', 
+            fontSize: '1.3rem'
+          }}
+        >
+          Usuário não encontrado!
+        </p>
     </div>
   );
 };

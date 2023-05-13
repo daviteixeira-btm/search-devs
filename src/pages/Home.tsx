@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import { useRecoilState } from 'recoil';
 import { useNavigate } from 'react-router-dom';
 
@@ -6,8 +7,9 @@ import Error from '../components/Error';
 import Search from '../components/Search';
 
 import { UserProps } from '../types/user';
-import { userState } from '../core/atoms/user.atom';
 
+import { userState } from '../core/atoms/user.atom';
+import { repositoriesSelector } from '../services/client';
 
 const Home = () => {
 
@@ -60,7 +62,7 @@ const Home = () => {
 
         setUser(userData);
         navigate("/perfil");
-    }
+    };
 
     return (
         <main
@@ -92,7 +94,7 @@ const Home = () => {
                     justifyContent: 'center',
                 }}
             >
-                <Search loadUser={loadUser} />
+                <Search loadUser={loadUser} repositoriesSelector={repositoriesSelector}/>
             </div>
 
             {error && <Error />}

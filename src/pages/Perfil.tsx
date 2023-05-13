@@ -4,6 +4,7 @@ import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 
 import User from '../components/User';
+import ReposPainel from '../components/ReposPainel';
 
 const Perfil = () => {
     return (
@@ -55,7 +56,6 @@ const Perfil = () => {
             >
 
                 <div>
-
                     <User />
                     
                     <Button
@@ -71,17 +71,7 @@ const Perfil = () => {
                 </div>
 
                 <div>
-                    <section
-                        style={{ 
-                            width: '56.5rem', 
-                            border: '1px solid black', 
-                            height: '50rem',
-                            background: '#fff',
-                            borderRadius: '4px'
-                        }}
-                    >
-
-                    </section>
+                    <ReposPainel />
                 </div>
                 
             </section>

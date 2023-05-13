@@ -5,15 +5,17 @@ import { InputText } from 'primereact/inputtext';
 
 type SearchProps = {
     loadUser: (userName: string) => Promise<void>;
+    repositoriesSelector: any;
 }
 
-const Search = ({ loadUser }: SearchProps) => {
+const Search = ({ loadUser, repositoriesSelector }: SearchProps) => {
 
     const [userName, setUserName] = useState("");
 
     const handleKeyDown = (e: KeyboardEvent) => {
         if(e.key === "Enter"){
             loadUser(userName);
+            repositoriesSelector(userName);
         }
     };
 
@@ -32,6 +34,7 @@ const Search = ({ loadUser }: SearchProps) => {
             <Button
                 onClick = {() => {
                     loadUser(userName)
+                    repositoriesSelector(userName)
                 }}
                 type="button"
                 label="Search"

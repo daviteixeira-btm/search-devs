@@ -4,4 +4,5 @@ export type ReposProps = {
     description: string;
     updated_at: string;
     stargazers_count: number;
+    html_url: string;
 };

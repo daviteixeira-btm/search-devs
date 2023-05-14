@@ -54,6 +54,9 @@ export const repositoriesSelector = selector({
     get: async ({ get }) => {
       const username = get(searchInputState);
       const repositories = await fetchRepositories(username);
+
+      repositories.sort((a: { stargazers_count: number; }, b: { stargazers_count: number; }) => b.stargazers_count - a.stargazers_count);
+      
       return repositories;
     },
 });

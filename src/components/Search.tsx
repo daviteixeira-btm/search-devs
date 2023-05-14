@@ -1,7 +1,10 @@
-import { useState, KeyboardEvent } from 'react';
+import { KeyboardEvent } from 'react';
 
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
+
+import { useRecoilState } from 'recoil';
+import { searchInputState } from '../core/atoms';
 
 type SearchProps = {
     loadUser: (userName: string) => Promise<void>;
@@ -10,13 +13,17 @@ type SearchProps = {
 
 const Search = ({ loadUser, repositoriesSelector }: SearchProps) => {
 
-    const [userName, setUserName] = useState("");
+    const [searchInput, setSearchInput] = useRecoilState(searchInputState);
 
     const handleKeyDown = (e: KeyboardEvent) => {
         if(e.key === "Enter"){
-            loadUser(userName);
-            repositoriesSelector(userName);
+            loadUser(searchInput);
+            repositoriesSelector(searchInput);
         }
+    };
+
+    const handleInputChange = (e: any) => {
+        setSearchInput(e.target.value);
     };
 
     return (
@@ -24,8 +31,10 @@ const Search = ({ loadUser, repositoriesSelector }: SearchProps) => {
             <span className="p-input-icon-left">
                 <i className="pi pi-search" />
                 <InputText
+                    type='text'
+                    value={searchInput}
                     placeholder="Search"
-                    onChange={(e) => setUserName(e.target.value)}
+                    onChange={handleInputChange}
                     onKeyDown={handleKeyDown}
                     style={{ width: '37rem', marginRight: '2rem' }} 
                 />
@@ -33,8 +42,8 @@ const Search = ({ loadUser, repositoriesSelector }: SearchProps) => {
 
             <Button
                 onClick = {() => {
-                    loadUser(userName)
-                    repositoriesSelector(userName)
+                    loadUser(searchInput)
+                    repositoriesSelector(searchInput)
                 }}
                 type="button"
                 label="Search"

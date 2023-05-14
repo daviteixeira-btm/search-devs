@@ -1,5 +1,6 @@
 import { selector } from 'recoil';
 import { UserProps } from '../types/user';
+import { searchInputState } from '../core/atoms';
 
 export const fetchUser = async (userName: string) => {
 
@@ -51,7 +52,7 @@ export const fetchRepositories = async (userName: string) => {
 export const repositoriesSelector = selector({
     key: 'repositoriesSelector',
     get: async ({ get }) => {
-      const username = 'diego3g'; // Substitua pelo nome de usuário desejado
+      const username = get(searchInputState);
       const repositories = await fetchRepositories(username);
       return repositories;
     },

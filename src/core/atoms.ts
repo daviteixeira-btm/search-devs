@@ -11,3 +11,8 @@ export const repoState = atom<Array<ReposProps>>({
     key: 'repositoriesState',
     default: [],
 });
+
+export const searchInputState = atom({
+    key: 'searchInputState',
+    default: '',
+});

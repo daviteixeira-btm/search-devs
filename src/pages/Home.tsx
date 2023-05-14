@@ -4,12 +4,13 @@ import { useRecoilState } from 'recoil';
 import { useNavigate } from 'react-router-dom';
 
 import Error from '../components/Error';
-import Search from '../components/Search';
 
 import { UserProps } from '../types/user';
 
 import { userState } from '../core/atoms';
 import { fetchUser, repositoriesSelector } from '../services/client';
+import InputSearch from '../components/InputSearch';
+import ButtonSearch from '../components/ButtonSearch';
 
 const Home = () => {
 
@@ -63,7 +64,15 @@ const Home = () => {
                     justifyContent: 'center',
                 }}
             >
-                <Search loadUser={handleLoadUser} repositoriesSelector={repositoriesSelector}/>
+                <InputSearch 
+                    loadUser={handleLoadUser} 
+                    repositoriesSelector={repositoriesSelector} 
+                />
+                
+                <ButtonSearch 
+                    loadUser={handleLoadUser} 
+                    repositoriesSelector={repositoriesSelector} 
+                />
             </div>
 
             {error && <Error />}

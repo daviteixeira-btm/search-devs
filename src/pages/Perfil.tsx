@@ -1,12 +1,45 @@
-import { NavLink } from 'react-router-dom';
+import { useState } from 'react';
+
+import { useRecoilState } from 'recoil';
+import { NavLink, useNavigate } from 'react-router-dom';
+
+import InputSearch from '../components/InputSearch';
+
+import { UserProps } from '../types/user';
+
+import { userState } from '../core/atoms';
+
+import { fetchUser, repositoriesSelector } from '../services/client';
 
 import { Button } from 'primereact/button';
-import { InputText } from 'primereact/inputtext';
 
 import User from '../components/User';
 import ReposPainel from '../components/ReposPainel';
 
 const Perfil = () => {
+
+    const [, setUser] = useRecoilState<UserProps | null>(userState);
+
+    const [, setError] = useState(false);
+
+    const navigate = useNavigate();
+
+    const handleLoadUser = async (userName: string) => {
+        setError(false);
+        setUser(null);
+
+        const loadUserResponse = await fetchUser(userName);
+        if(loadUserResponse === 404){
+            setError(true);
+            return;
+        }
+
+        setUser(loadUserResponse);
+        navigate("/perfil");
+    };
+
+
+
     return (
         <main>
             <nav
@@ -30,18 +63,7 @@ const Perfil = () => {
                     </h1>
                 </NavLink>
 
-                <span className="p-input-icon-left">
-                    <i className="pi pi-search" />
-                    <InputText
-                        value=""
-                        placeholder="Search"
-                        style={{ 
-                            width: '36rem', 
-                            borderRadius: '.3rem', 
-                            border: '2px solid #8C19D2', 
-                        }} 
-                    />
-                </span>
+                <InputSearch loadUser={handleLoadUser} repositoriesSelector={repositoriesSelector} />
             </nav>
             
             <section

@@ -9,7 +9,7 @@ import Search from '../components/Search';
 import { UserProps } from '../types/user';
 
 import { userState } from '../core/atoms';
-import { repositoriesSelector } from '../services/client';
+import { fetchUser, repositoriesSelector } from '../services/client';
 
 const Home = () => {
 
@@ -19,48 +19,17 @@ const Home = () => {
 
     const navigate = useNavigate();
 
-    const loadUser = async (userName: string) => {
-
+    const handleLoadUser = async (userName: string) => {
         setError(false);
         setUser(null);
 
-        const response = await fetch(`https://api.github.com/users/${userName}`);
-        const data = await response.json();
-
-        if (response.status === 404) {
+        const loadUserResponse = await fetchUser(userName);
+        if(loadUserResponse === 404){
             setError(true);
             return;
         }
 
-        const {
-            bio,
-            name,
-            blog,
-            email,
-            login,
-            company,
-            location,
-            followers,
-            following,
-            avatar_url,
-            twitter_username,
-        } = data;
-
-        const userData: UserProps = {
-            bio,
-            name,
-            blog,
-            login,
-            email,
-            company,
-            location,
-            followers,
-            following,
-            avatar_url,
-            twitter_username,
-        };
-
-        setUser(userData);
+        setUser(loadUserResponse);
         navigate("/perfil");
     };
 
@@ -94,7 +63,7 @@ const Home = () => {
                     justifyContent: 'center',
                 }}
             >
-                <Search loadUser={loadUser} repositoriesSelector={repositoriesSelector}/>
+                <Search loadUser={handleLoadUser} repositoriesSelector={repositoriesSelector}/>
             </div>
 
             {error && <Error />}

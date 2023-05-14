@@ -41,11 +41,11 @@ const User = () => {
             <div style={{ margin: '1.5rem 1rem' }}>
                 <p style={{ display: 'flex', alignItems: 'center', color: '#4A5568', fontSize: '14px', marginBottom: '11px' }}>
                     <i className="pi pi-users"></i>
-                    <span style={{ marginLeft: '9px' }}>{user.followers}</span> seguidores
+                    <span style={{ margin: '0 4px 0 9px' }}>{user.followers}</span> seguidores
                 </p>
                 <p style={{ display: 'flex', alignItems: 'center', color: '#4A5568', fontSize: '14px' }}>
                     <i className="pi pi-heart"></i>
-                    <span style={{ marginLeft: '9px' }}>{user.following}</span> seguindo
+                    <span style={{ margin: '0 4px 0 9px' }}>{user.following}</span> seguindo
                 </p>
             </div>
 
@@ -73,17 +73,31 @@ const User = () => {
                 )}
 
                 {user.blog && (
-                    <p style={{ display: 'flex', alignItems: 'center', color: '#4A5568', fontSize: '14px', marginBottom: '11px' }}>
-                        <i className="pi pi-paperclip"></i>
-                        <span style={{ marginLeft: '9px' }}>{user.blog}</span>
-                    </p>
+                    <a
+                        target="_blank"
+                        href={user.blog}
+                        rel="noopener noreferrer"
+                        style={{ textDecoration: 'none', color: '#4A5568' }}
+                    >
+                        <p style={{ display: 'flex', alignItems: 'center', color: '#4A5568', fontSize: '14px', marginBottom: '11px' }}>
+                            <i className="pi pi-paperclip"></i>
+                            <span style={{ marginLeft: '9px' }}>{user.blog}</span>
+                        </p>
+                    </a>
                 )}
 
                 {user.twitter_username && (
-                    <p style={{ display: 'flex', alignItems: 'center', color: '#4A5568', fontSize: '14px', marginBottom: '11px' }}>
-                        <i className="pi pi-twitter"></i>
-                        <span style={{ marginLeft: '9px' }}>{user.twitter_username}</span>
-                    </p>
+                    <a
+                        target="_blank"
+                        href={`https://twitter.com/${user.twitter_username}`}
+                        rel="noopener noreferrer"
+                        style={{ textDecoration: 'none', color: '#4A5568' }}
+                    >
+                        <p style={{ display: 'flex', alignItems: 'center', color: '#4A5568', fontSize: '14px', marginBottom: '11px' }}>
+                            <i className="pi pi-twitter"></i>
+                            <span style={{ marginLeft: '9px' }}>{user.twitter_username}</span>
+                        </p>
+                    </a>
                 )}
             </div>
 

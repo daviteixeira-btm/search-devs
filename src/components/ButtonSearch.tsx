@@ -1,11 +1,10 @@
 import { Button } from 'primereact/button'
-import { RecoilValueReadOnly, useRecoilState } from 'recoil';
-import { ReposProps } from '../types/repos';
+import { useRecoilState } from 'recoil';
 import { searchInputState } from '../core/atoms';
 
 type SearchProps = {
     loadUser: (userName: string) => Promise<void>;
-    repositoriesSelector: (username: string) => RecoilValueReadOnly<ReposProps[]>;
+    repositoriesSelector: any;
 }
 
 const ButtonSearch = ({ loadUser, repositoriesSelector }: SearchProps) => {

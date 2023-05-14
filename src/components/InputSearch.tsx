@@ -1,8 +1,6 @@
 import { ChangeEvent, KeyboardEvent } from 'react';
 
-import { ReposProps } from '../types/repos';
-
-import { RecoilValueReadOnly, useRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 
 import { searchInputState } from '../core/atoms';
 
@@ -10,7 +8,7 @@ import { InputText } from 'primereact/inputtext';
 
 type SearchProps = {
     loadUser: (userName: string) => Promise<void>;
-    repositoriesSelector: (username: string) => RecoilValueReadOnly<ReposProps[]>;
+    repositoriesSelector: any;
 }
 
 const InputSearch = ({ loadUser, repositoriesSelector }: SearchProps) => {

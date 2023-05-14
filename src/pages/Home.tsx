@@ -8,7 +8,7 @@ import Search from '../components/Search';
 
 import { UserProps } from '../types/user';
 
-import { userState } from '../core/atoms/user.atom';
+import { userState } from '../core/atoms';
 import { repositoriesSelector } from '../services/client';
 
 const Home = () => {

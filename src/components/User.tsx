@@ -1,5 +1,5 @@
 import { useRecoilValue } from "recoil";
-import { userState } from "../core/atoms/user.atom";
+import { userState } from "../core/atoms";
 
 const User = () => {
 

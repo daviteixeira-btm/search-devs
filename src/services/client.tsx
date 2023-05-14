@@ -1,16 +1,15 @@
 import { selector } from 'recoil';
-import { repoState } from '../core/atoms/repos.atom';
 
 export const fetchRepositories = async (userName: string) => {
-    const response = await fetch(`https://api.github.com/users/${userName}/repos`);
-    const data = await response.json();
-    return data;
+    const userResponse = await fetch(`https://api.github.com/users/${userName}/repos`);
+    const UserData = await userResponse.json();
+    return UserData;
 }
 
 export const repositoriesSelector = selector({
     key: 'repositoriesSelector',
     get: async ({ get }) => {
-      const username = 'daviteixeira-btm'; // Substitua pelo nome de usuário desejado
+      const username = 'diego3g'; // Substitua pelo nome de usuário desejado
       const repositories = await fetchRepositories(username);
       return repositories;
     },

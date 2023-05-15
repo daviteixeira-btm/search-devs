@@ -10,11 +10,13 @@
 <a id="Introducao"></a>
 ## 🧩 Introdução
 
-### Construir uma aplicação React que busque o perfil de desenvolvedores na API pública do GitHub e exibir os seus dados em uma página de perfil. Busquei aprender a utilizar o PrimeReact visto que é utilizado nos projetos da Petize, do qual vi em seu website.
+### A escolha das bibliotecas e frameworks em um projeto de desenvolvimento de software é uma etapa crucial, pois influencia diretamente o desempenho, a funcionalidade e a eficiência da aplicação final. No projeto proposto, o objetivo é construir uma aplicação React que busque o perfil de desenvolvedores na API pública do GitHub e exiba seus dados em uma página de perfil.
+
+### Em resumo, a escolha de utilizar o React como framework base e o PrimeReact como biblioteca complementar para a construção da aplicação pode ser motivada pela popularidade e flexibilidade do React, bem como pela experiência prévia da equipe com o PrimeReact, onde observei o uso da biblioteca a partir do website da empresa no uso e adequação às necessidades e objetivos de seus projetos. Essas escolhas visam garantir a eficiência no desenvolvimento, a manutenção do código e a entrega de uma interface de usuário moderna e intuitiva.
 
 <a id="Dependencias"></a>
 ## 🧪 Dependencias
-> Requisitos para rotar o codigo...
+> Requisitos para rotar o código.
 
 <ul>
   <li>
@@ -28,6 +30,12 @@
   </li>
   <li>
     <a href="https://www.typescriptlang.org/">TypeScript</a>
+  </li>
+  <li>
+    <a href="https://vitejs.dev/">ViteJS</a>
+  </li>
+  <li>
+    <a href="https://recoiljs.org/">Recoil</a>
   </li>
 </ul>
 
@@ -48,13 +56,20 @@
  npm run dev
 ```
 
+#### Para rodar o build
+```
+ npm run build
+```
+> Porém, o site já esta com deploy feito na Vercel, basta acessar o link abaixo:
+<a href="https://search-devs-steel.vercel.app/">Site Link</a>
+
 <a id="Scripts"></a>
 ## 📖 Scripts
 
 ```JSON
 "scripts": {
-  "dev": "vite",
-   "build": "npm run build && vite build",
+  "dev": "npm run dev",
+   "build": "npm run build",
    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
    "preview": "vite preview"
 }
@@ -64,7 +79,6 @@
 
 ```JSON
 "dependencies": {
-  "primeflex": "^3.3.0",
   "primeicons": "^6.0.1",
   "primereact": "^9.3.1",
   "react": "^18.2.0",

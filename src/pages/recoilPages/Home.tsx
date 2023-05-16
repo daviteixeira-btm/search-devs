@@ -3,14 +3,14 @@ import { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { useNavigate } from 'react-router-dom';
 
-import Error from '../components/Error';
+import Error from '../../components/Error';
 
-import { UserProps } from '../types/user';
+import { UserProps } from '../../types/user';
 
-import { userState } from '../core/atoms';
-import { fetchUser, repositoriesSelector } from '../services/client';
-import InputSearch from '../components/InputSearch';
-import ButtonSearch from '../components/ButtonSearch';
+import { userState } from '../../core/atoms';
+import { fetchUser, repositoriesSelector } from '../../services/client';
+import InputSearch from '../../components/recoilComponents/InputSearch';
+import ButtonSearch from '../../components/recoilComponents/ButtonSearch';
 
 const Home = () => {
 

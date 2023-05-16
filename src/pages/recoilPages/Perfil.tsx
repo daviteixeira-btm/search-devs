@@ -3,18 +3,18 @@ import { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { NavLink, useNavigate } from 'react-router-dom';
 
-import InputSearch from '../components/InputSearch';
+import InputSearch from '../../components/recoilComponents/InputSearch';
 
-import { UserProps } from '../types/user';
+import { UserProps } from '../../types/user';
 
-import { userState } from '../core/atoms';
+import { userState } from '../../core/atoms';
 
-import { fetchUser, repositoriesSelector } from '../services/client';
+import { fetchUser, repositoriesSelector } from '../../services/client';
 
 import { Button } from 'primereact/button';
 
-import User from '../components/User';
-import ReposPainel from '../components/ReposPainel';
+import User from '../../components/recoilComponents/User';
+import ReposPainel from '../../components/recoilComponents/ReposPainel';
 
 const Perfil = () => {
 
@@ -34,11 +34,11 @@ const Perfil = () => {
             return;
         }
 
-        setUser(loadUserResponse);
+        if (loadUserResponse !== null) {
+            setUser(loadUserResponse);
+        }
         navigate("/perfil");
     };
-
-
 
     return (
         <main>

@@ -8,7 +8,7 @@ const Error = () => {
             fontSize: '1.3rem'
           }}
         >
-          Usuário não encontrado!
+          Digite um usuário válido!
         </p>
     </div>
   );

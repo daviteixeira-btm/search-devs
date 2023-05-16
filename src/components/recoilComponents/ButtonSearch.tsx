@@ -1,6 +1,6 @@
 import { Button } from 'primereact/button'
 import { useRecoilState } from 'recoil';
-import { searchInputState } from '../core/atoms';
+import { searchInputState } from '../../core/atoms';
 
 type SearchProps = {
     loadUser: (userName: string) => Promise<void>;

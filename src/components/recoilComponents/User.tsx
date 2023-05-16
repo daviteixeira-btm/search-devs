@@ -1,12 +1,12 @@
 import { useRecoilValue } from "recoil";
-import { userState } from "../core/atoms";
+import { userState } from "../../core/atoms";
 
 const User = () => {
 
     const user = useRecoilValue(userState);
 
     if(!user){
-        return <h1>Usuario não pesquisado...</h1>
+        return <h1>Loading...</h1>
     }
 
     return (

@@ -2,7 +2,7 @@ import { ChangeEvent, KeyboardEvent } from 'react';
 
 import { useRecoilState } from 'recoil';
 
-import { searchInputState } from '../core/atoms';
+import { searchInputState } from '../../core/atoms';
 
 import { InputText } from 'primereact/inputtext';
 
@@ -17,8 +17,10 @@ const InputSearch = ({ loadUser, repositoriesSelector }: SearchProps) => {
 
     const handleKeyDown = (e: KeyboardEvent) => {
         if(e.key === "Enter"){
-            loadUser(searchInput);
-            repositoriesSelector(searchInput);
+            if (searchInput !== null) {
+                loadUser(searchInput);
+                repositoriesSelector(searchInput);
+            }
         }
     };
 

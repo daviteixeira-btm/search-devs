@@ -1,6 +1,6 @@
 import { useRecoilValue } from "recoil";
 
-import { repositoriesSelector } from "../services/client";
+import { repositoriesSelector } from "../../services/client";
 
 const ReposPainel = () => {
 

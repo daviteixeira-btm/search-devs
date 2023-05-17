@@ -22,7 +22,7 @@ function UserReposComponent() {
     }, [username]);
 
     if (repositories.length === 0) {
-        return <h1>Este usuário não tem reposítorios...</h1>;
+        return <h1>Não há reposítorios...</h1>;
     }
 
     return (

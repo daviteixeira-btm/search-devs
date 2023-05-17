@@ -1,4 +1,3 @@
-import { Button } from "primereact/button";
 import { ChangeEvent, useState } from "react";
 import UserProfile from "../components/UserProfile";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -41,7 +40,6 @@ const UserPerfilPage = () => {
                     </NavLink>
                 </h1>
 
-                {/* <InputSearch loadUser={handleLoadUser} repositoriesSelector={repositoriesSelector} /> */}
                 <InputUserSearch
                     username={username}
                     handleFormSubmit={handleFormSubmit}
@@ -61,24 +59,10 @@ const UserPerfilPage = () => {
             >
 
                 <div>
-                    {/* <User /> */}
-
                     <UserProfile />
-                    
-                    <Button
-                        type="button"
-                        label="Contato"
-                        className="p-button-raised p-button-help p-p-3"
-                        style={{ 
-                            width: '17.5rem', 
-                            borderRadius: '6px', 
-                            marginTop: '2.5rem', 
-                        }}
-                    />
                 </div>
 
                 <div>
-                    {/* <ReposPainel /> */}
                     <UserReposComponent />
                 </div>
                 

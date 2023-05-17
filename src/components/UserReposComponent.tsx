@@ -1,6 +1,8 @@
+import { ptBR } from 'date-fns/locale';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { UserReposType } from '../types/repos';
+import { formatDistanceToNow, parseISO } from 'date-fns';
 import { fetchUserReposClient } from '../services/fetchUserClient';
 
 function UserReposComponent() {
@@ -37,11 +39,19 @@ function UserReposComponent() {
         >
             <ul>
                 {
-                    repositories.map((repo) => (
-                        <div
+                    repositories.map((repo) => {
+
+                    const updatedAt = parseISO(repo.updated_at);
+                    const daysSinceUpdate = formatDistanceToNow(updatedAt, { addSuffix: true, locale: ptBR });
+                    
+                    return (
+                        <li
+                            key={repo.id}
+                            
                             style={{
                                 height: 'auto',
                                 margin: '24px',
+                                listStyle: 'none',
                                 borderBottom: '1px solid #f2f2f2',
                             }}
                         >
@@ -78,12 +88,12 @@ function UserReposComponent() {
                                     <i className="pi pi-circle-on" style={{ fontSize: '4px' }}></i>
                                 </p>
                                 <p style={{ marginLeft: '11px', fontSize: '14px' }}>
-                                    {repo.updated_at}
+                                    Atualizado {daysSinceUpdate}
                                 </p>
                             </div>
 
-                        </div>
-                    ))
+                        </li>
+                    )})
                 }
             </ul>
         </section>

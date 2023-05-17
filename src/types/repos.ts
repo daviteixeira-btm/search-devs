@@ -1,8 +1,8 @@
-export type ReposProps = {
+export interface UserReposType {
     id: number;
     name: string;
-    description: string;
-    updated_at: string;
-    stargazers_count: number;
     html_url: string;
-};
+    updated_at: string;
+    description: string;
+    stargazers_count: number;
+}

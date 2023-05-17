@@ -1,10 +1,15 @@
 import { InputText } from "primereact/inputtext";
+import { ChangeEventHandler, FormEventHandler } from "react";
 
-const InputUserSearch = ({ handleFormSubmit, username, handleInputChange }: any) => {
+type InputUserSearchProps = {
+    username: string;
+    handleFormSubmit: FormEventHandler<HTMLFormElement>;
+    handleInputChange: ChangeEventHandler<HTMLInputElement>;
+}
 
+const InputUserSearch = ({ username, handleFormSubmit, handleInputChange }: InputUserSearchProps) => {
     return (
         <form onSubmit={handleFormSubmit}>
-
             <span className="p-input-icon-left">
                 <i className="pi pi-search" />
                 <InputText

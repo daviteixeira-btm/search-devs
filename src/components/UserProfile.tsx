@@ -1,38 +1,29 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { UserProfileType } from '../types/user';
 import { fetchUserProfile } from '../services/fetchUserClient';
-
-interface UserProfileType {
-    bio: string;
-    name: string
-    blog: string;
-    login: string;
-    email: string;
-    company: string;
-    location: string;
-    followers: string;
-    following: string;
-    avatar_url: string;
-    twitter_username: string
-}
 
 function UserProfile(){
 
     const { username } = useParams();
 
-    const [userData, setUserData] = useState<UserProfileType>();
+    const [userData, setUserData] = useState<UserProfileType | null>();
 
     useEffect(() => {
         const fetchUserData = async () => {
-            const githubUserData = await fetchUserProfile(username);
-            setUserData(githubUserData);
+            try {
+                const githubUserData = await fetchUserProfile(username);
+                setUserData(githubUserData);
+            } catch (error){
+                setUserData(null);
+            } 
         };
 
         fetchUserData();
     }, [username]);
 
     if (!userData) {
-        return <h1>Login...</h1>;
+        return <h1>Usuário não encontrado...</h1>;
     }
 
     return (

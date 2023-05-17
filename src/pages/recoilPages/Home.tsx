@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 import Error from '../../components/Error';
 
-import { UserProps } from '../../types/user';
+// import { UserProps } from '../../types/user';
 
 import { userState } from '../../core/atoms';
 import { fetchUser, repositoriesSelector } from '../../services/client';
@@ -14,7 +14,7 @@ import ButtonSearch from '../../components/recoilComponents/ButtonSearch';
 
 const Home = () => {
 
-    const [, setUser] = useRecoilState<UserProps | null>(userState);
+    // const [, setUser] = useRecoilState<UserProps | null>(userState);
 
     const [error, setError] = useState(false);
 
@@ -22,7 +22,7 @@ const Home = () => {
 
     const handleLoadUser = async (userName: string) => {
         setError(false);
-        setUser(null);
+        // setUser(null);
 
         const loadUserResponse = await fetchUser(userName);
         if(loadUserResponse === 404){
@@ -30,7 +30,7 @@ const Home = () => {
             return;
         }
 
-        setUser(loadUserResponse);
+        // setUser(loadUserResponse);
         navigate("/perfil");
     };
 

@@ -1,13 +1,14 @@
-export type UserProps = {
-    name: string;
+export interface UserProfileType {
+    id: number;
+    bio: string;
+    name: string
+    blog: string;
     login: string;
+    email: string;
+    company: string;
     location: string;
     followers: number;
     following: number;
     avatar_url: string;
-    bio: string;
-    company: string;
-    email: string;
-    blog: string;
     twitter_username: string
-};
+}

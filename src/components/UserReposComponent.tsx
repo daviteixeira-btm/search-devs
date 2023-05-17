@@ -1,14 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { UserReposType } from '../types/repos';
 import { fetchUserReposClient } from '../services/fetchUserClient';
-
-interface UserReposType {
-    name: string;
-    html_url: string;
-    updated_at: string;
-    description: string;
-    stargazers_count: number;
-}
 
 function UserReposComponent() {
 
@@ -17,15 +10,19 @@ function UserReposComponent() {
 
     useEffect(() => {
         const fetchRepositories = async () => {
-            const githubUserData = await fetchUserReposClient(username); 
-            setRepositories(githubUserData);
+            try {
+                const githubUserData = await fetchUserReposClient(username);
+                setRepositories(githubUserData);
+            } catch (error){
+                setRepositories([])
+            }
         };
 
         fetchRepositories();
     }, [username]);
 
     if (repositories.length === 0) {
-        return <div>Loading...</div>;
+        return <h1>Este usuário não tem reposítorios...</h1>;
     }
 
     return (
@@ -39,53 +36,55 @@ function UserReposComponent() {
             }}
         >
             <ul>
-                {repositories.map((repo) => (
-                    <div
-                        style={{
-                            height: 'auto',
-                            margin: '24px',
-                            borderBottom: '1px solid #f2f2f2',
-                        }}
-                    >
-                        <a
-                            target="_blank"
-                            href={repo.html_url}
-                            rel="noopener noreferrer"
-                            style={{ textDecoration: 'none', color: '#171923', fontWeight: '700' }}
-                        >
-                            <h3 style={{ marginBottom: '1rem', fontSize: '20px' }}>{repo.name}</h3>
-                        </a>
-
-                        <p style={{ marginBottom: '1rem' }}>{repo.description}</p>
-
+                {
+                    repositories.map((repo) => (
                         <div
                             style={{
-                                display: 'flex',
-                                marginBottom: '1rem',
-                                alignItems: 'center',
+                                height: 'auto',
+                                margin: '24px',
+                                borderBottom: '1px solid #f2f2f2',
                             }}
                         >
-                            <p
+                            <a
+                                target="_blank"
+                                href={repo.html_url}
+                                rel="noopener noreferrer"
+                                style={{ textDecoration: 'none', color: '#171923', fontWeight: '700' }}
+                            >
+                                <h3 style={{ marginBottom: '1rem', fontSize: '20px' }}>{repo.name}</h3>
+                            </a>
+
+                            <p style={{ marginBottom: '1rem' }}>{repo.description}</p>
+
+                            <div
                                 style={{
                                     display: 'flex',
-                                    color: '#4A5568',
-                                    fontSize: '14px',
+                                    marginBottom: '1rem',
                                     alignItems: 'center',
                                 }}
                             >
-                                <i className="pi pi-star"></i>
-                                <span style={{ margin: '0 11px', fontSize: '14px' }}>
-                                    {repo.stargazers_count}
-                                </span>
-                                <i className="pi pi-circle-on" style={{ fontSize: '4px' }}></i>
-                            </p>
-                            <p style={{ marginLeft: '11px', fontSize: '14px' }}>
-                                {repo.updated_at}
-                            </p>
-                        </div>
+                                <p
+                                    style={{
+                                        display: 'flex',
+                                        color: '#4A5568',
+                                        fontSize: '14px',
+                                        alignItems: 'center',
+                                    }}
+                                >
+                                    <i className="pi pi-star"></i>
+                                    <span style={{ margin: '0 11px', fontSize: '14px' }}>
+                                        {repo.stargazers_count}
+                                    </span>
+                                    <i className="pi pi-circle-on" style={{ fontSize: '4px' }}></i>
+                                </p>
+                                <p style={{ marginLeft: '11px', fontSize: '14px' }}>
+                                    {repo.updated_at}
+                                </p>
+                            </div>
 
-                    </div>
-                ))}
+                        </div>
+                    ))
+                }
             </ul>
         </section>
     );

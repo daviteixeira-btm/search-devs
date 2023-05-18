@@ -10,9 +10,17 @@
 <a id="Introducao"></a>
 ## 🧩 Introdução
 
-### A escolha das bibliotecas e frameworks em um projeto de desenvolvimento de software é uma etapa crucial, pois influencia diretamente o desempenho, a funcionalidade e a eficiência da aplicação final. No projeto proposto, o objetivo é construir uma aplicação React que busque o perfil de desenvolvedores na API pública do GitHub e exiba seus dados em uma página de perfil.
+### No projeto proposto, o objetivo é construir uma aplicação React que busque o perfil de desenvolvedores na API pública do GitHub e exiba seus dados em uma página de perfil.
 
-### Em resumo, a escolha de utilizar o React como framework base e o PrimeReact como biblioteca complementar para a construção da aplicação pode ser motivada pela popularidade e flexibilidade do React, bem como pela experiência prévia da equipe com o PrimeReact, onde observei o uso da biblioteca a partir do website da empresa no uso e adequação às necessidades e objetivos de seus projetos. Essas escolhas visam garantir a eficiência no desenvolvimento, a manutenção do código e a entrega de uma interface de usuário moderna e intuitiva.
+### Histórias
+
+<ul>
+  <li>Ao entrar na home page, é possível conseguir pesquisar o usuário pelo seu username do GitHub e ter os dados do usuário exibidos corretamente na página de perfil.</li>
+  <li>Na página de perfil, os repositórios são ordenados com o seguinte critério: dos que têm mais estrelas, para os que têm menos estrelas.</li>
+  <li>Os nomes dos repositórios são links que levam ao repositório original do GitHub.</li>
+  <li>Caso o usuário pesquisado possua um site nas informações de seu perfil, deve haver um link que ao clicar para que abra aquele site. O mesmo deve acontecer caso o usuário pesquisado tenha uma conta no twitter em seu perfil.</li>
+  <li>O botão de "Ver Perfil Completo" deve levar para a página do GitHub do usuário.</li>
+</ul>
 
 <a id="Dependencias"></a>
 ## 🧪 Dependencias
@@ -35,7 +43,10 @@
     <a href="https://vitejs.dev/">ViteJS</a>
   </li>
   <li>
-    <a href="https://recoiljs.org/">Recoil</a>
+    <a href="https://date-fns.org/">date-fns</a>
+  </li>
+  <li>
+    <a href="https://react.dev/">React</a>
   </li>
 </ul>
 
@@ -79,13 +90,13 @@
 
 ```JSON
 "dependencies": {
+  "date-fns": "^2.30.0",
   "primeicons": "^6.0.1",
   "primereact": "^9.3.1",
   "react": "^18.2.0",
   "react-dom": "^18.2.0",
   "react-router-dom": "^6.11.1",
   "react-transition-group": "^4.4.5",
-  "recoil": "^0.7.7"
 }
 
 ```

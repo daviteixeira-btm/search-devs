@@ -1,4 +1,4 @@
-<h1 align="center"> Search d_evs </h1>
+<h1 align="center"> <img src="public/icon.png" width="40px" height="40px" /> Search d_evs </h1>
 
 <p align="center">
   <a href="#Introducao"> 🧩 Introdução </a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;

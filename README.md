@@ -10,11 +10,21 @@
 <a id="Introducao"></a>
 ## 🧩 Introdução
 
-### Construir uma aplicação React que busque o perfil de desenvolvedores na API pública do GitHub e exibir os seus dados em uma página de perfil. Busquei aprender a utilizar o PrimeReact visto que é utilizado nos projetos da Petize, do qual vi em seu website.
+### No projeto proposto, o objetivo é construir uma aplicação React que busque o perfil de desenvolvedores na API pública do GitHub e exiba seus dados em uma página de perfil.
+
+### Histórias
+
+<ul>
+  <li>Ao entrar na home page, é possível conseguir pesquisar o usuário pelo seu username do GitHub e ter os dados do usuário exibidos corretamente na página de perfil.</li>
+  <li>Na página de perfil, os repositórios são ordenados com o seguinte critério: dos que têm mais estrelas, para os que têm menos estrelas.</li>
+  <li>Os nomes dos repositórios são links que levam ao repositório original do GitHub.</li>
+  <li>Caso o usuário pesquisado possua um site nas informações de seu perfil, deve haver um link que ao clicar para que abra aquele site. O mesmo deve acontecer caso o usuário pesquisado tenha uma conta no twitter em seu perfil.</li>
+  <li>O botão de "Ver Perfil Completo" deve levar para a página do GitHub do usuário.</li>
+</ul>
 
 <a id="Dependencias"></a>
 ## 🧪 Dependencias
-> Requisitos para rotar o codigo...
+> Requisitos para rotar o código.
 
 <ul>
   <li>
@@ -28,6 +38,15 @@
   </li>
   <li>
     <a href="https://www.typescriptlang.org/">TypeScript</a>
+  </li>
+  <li>
+    <a href="https://vitejs.dev/">ViteJS</a>
+  </li>
+  <li>
+    <a href="https://date-fns.org/">date-fns</a>
+  </li>
+  <li>
+    <a href="https://react.dev/">React</a>
   </li>
 </ul>
 
@@ -48,13 +67,20 @@
  npm run dev
 ```
 
+#### Para rodar o build
+```
+ npm run build
+```
+> Porém, o site já esta com deploy feito na Vercel, basta acessar o link abaixo:
+<a href="https://search-devs-steel.vercel.app/">Site Link</a>
+
 <a id="Scripts"></a>
 ## 📖 Scripts
 
 ```JSON
 "scripts": {
-  "dev": "vite",
-   "build": "npm run build && vite build",
+  "dev": "npm run dev",
+   "build": "npm run build",
    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
    "preview": "vite preview"
 }
@@ -64,14 +90,13 @@
 
 ```JSON
 "dependencies": {
-  "primeflex": "^3.3.0",
+  "date-fns": "^2.30.0",
   "primeicons": "^6.0.1",
   "primereact": "^9.3.1",
   "react": "^18.2.0",
   "react-dom": "^18.2.0",
   "react-router-dom": "^6.11.1",
   "react-transition-group": "^4.4.5",
-  "recoil": "^0.7.7"
 }
 
 ```

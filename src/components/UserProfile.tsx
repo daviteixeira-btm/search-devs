@@ -3,12 +3,16 @@ import { useParams } from 'react-router-dom';
 import { UserProfileType } from '../types/user';
 import { fetchUserProfile } from '../services/fetchUserClient';
 import { Button } from 'primereact/button';
+import Loader from './Loader/Loader';
 
 function UserProfile() {
 
     const { username } = useParams();
 
-    const [userData, setUserData] = useState<UserProfileType | null>();
+    const [userData, setUserData] = useState<UserProfileType | null>(null);
+
+    const [, setLoading] = useState(true);
+    const [showLoader, setShowLoader] = useState(true);
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -17,14 +21,23 @@ function UserProfile() {
                 setUserData(githubUserData);
             } catch (error) {
                 setUserData(null);
+            } finally {
+                setLoading(false);
+                setTimeout(() => {
+                    setShowLoader(false);
+                }, 500);
             }
         };
 
         fetchUserData();
     }, [username]);
 
+    if (showLoader) {
+        return <Loader />;
+    }
+
     if (!userData) {
-        return <h1>Usuário não encontrado...</h1>;
+        return <h1 style={{ color: "#8C19D2" }}>Usuário não encontrado...</h1>;
     }
 
     return (

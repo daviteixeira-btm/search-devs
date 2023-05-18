@@ -1,0 +1,91 @@
+.pac-man {
+    margin: 4rem;
+    background: #f00;
+    border-radius: 50%;
+    transform-origin: bottom;
+    border-radius: 100rem 100rem 0 0;
+    animation: eating-top .5s infinite;
+}
+
+.pac-man, .pac-man::before {
+    width: 70px;
+    height: calc(35px);
+    background: #8C19D2;
+}
+
+.pac-man::before {
+    content: '';
+    display: block;
+    position: absolute;
+    transform-origin: top;
+    margin-top: calc(35px);
+    transform: rotate(80deg);
+    border-radius: 0 0 100rem 100rem;
+    animation: eating-bottom .5s infinite;
+}
+
+.pac-man::after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    display: bock;
+    position: absolute;
+    border-radius: 100rem;
+    margin-top: calc(25px);
+    margin-left: calc(25px);
+    transform-origin: center;
+    animation: center .5s infinite, ball .5s -0.33s infinite linear;
+}
+
+@keyframes eating-top {
+    0% {
+        transform: rotate(-40deg);
+    }
+
+    50% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(-40deg);
+    }
+}
+
+@keyframes eating-bottom {
+    0% {
+        transform: rotate(80deg);
+    }
+
+    50% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(80deg);
+    }
+}
+
+@keyframes center {
+    0% {
+        transform: rotate(40deg);
+    }
+
+    50% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(40deg);
+    }
+}
+
+@keyframes ball {
+    0% {
+        opacity: .7;
+        box-shadow: 70px 0 0 0 #8C19D2, 120px 0 0 0 #8C19D2;
+    }
+
+    100% {
+        box-shadow: 20px 0 0 0 #8C19D2, 70px 0 0 0 #8C19D2;
+    }
+}

@@ -4,11 +4,15 @@ import { useParams } from 'react-router-dom';
 import { UserReposType } from '../types/repos';
 import { formatDistanceToNow, parseISO } from 'date-fns';
 import { fetchUserReposClient } from '../services/fetchUserClient';
+import Loader from './Loader/Loader';
 
 function UserReposComponent() {
 
     const { username } = useParams();
     const [repositories, setRepositories] = useState<UserReposType[]>([]);
+
+    const [, setLoading] = useState(true);
+    const [showLoader, setShowLoader] = useState(true);
 
     useEffect(() => {
         const fetchRepositories = async () => {
@@ -17,14 +21,23 @@ function UserReposComponent() {
                 setRepositories(githubUserData);
             } catch (error){
                 setRepositories([])
+            } finally {
+                setLoading(false);
+                setTimeout(() => {
+                    setShowLoader(false);
+                }, 500);
             }
         };
 
         fetchRepositories();
     }, [username]);
 
+    if (showLoader) {
+        return <Loader />;
+    }
+
     if (repositories.length === 0) {
-        return <h1>Não há reposítorios...</h1>;
+        return <h1 style={{ color: "#8C19D2" }}>Não há reposítorios...</h1>;
     }
 
     return (

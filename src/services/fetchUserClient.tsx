@@ -23,7 +23,7 @@ export const fetchUserProfile = async (username: string | undefined) => {
 
 export const fetchUserReposClient = async (username: string | undefined) => {
 
-    const apiUrl = `https://api.github.com/users/${username}/repos`;
+    const apiUrl = `https://api.github.com/users/${username}/repos?per_page=100`;
 
     const response = await fetch(apiUrl)
         .then((data) => {
@@ -39,8 +39,6 @@ export const fetchUserReposClient = async (username: string | undefined) => {
     if (response.status === 404) {
         return 404;
     }
-
-    response.sort((a: { stargazers_count: number; }, b: { stargazers_count: number; }) => b.stargazers_count - a.stargazers_count);
 
     return response;
 };
